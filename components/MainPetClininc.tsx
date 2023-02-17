@@ -14,7 +14,7 @@ const MainPetClininc = () => {
   const [search, setSearch] = useState<string>("");
   const [searchPetName, setSearchPetName] = useState<string>("");
   const [select, setSelect] = useState<string>("");
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [selectedRowId, setSelectedRowId] = useState<string>("");
   const today = new Date();
@@ -33,7 +33,7 @@ const MainPetClininc = () => {
     getAllPatients()
       .then((result) => {
         setPatients(result.data);
-        setIsLoading((isLoading) => !isLoading);
+        setIsLoading(!isLoading);
       })
       .catch((err) => {
         errorMsg("Something went wrong... Please try agian!");
@@ -63,7 +63,9 @@ const MainPetClininc = () => {
         />
       </div>
 
-      {!isLoading ? (
+      {isLoading ? (
+        <Spinner />
+      ) : (
         <div className="container mx-auto px-4 sm:px-8">
           <div className="py-4 overflow-x-auto w-full">
             <div className=" min-w-full rounded-lg w-36">
@@ -93,8 +95,6 @@ const MainPetClininc = () => {
             )}
           </div>
         </div>
-      ) : (
-        <Spinner />
       )}
     </div>
   );
