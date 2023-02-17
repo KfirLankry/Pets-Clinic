@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { addNewPatient } from "../services/patientService";
+import AddPatientBtn from "../components/AddPatientBtn";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { errorMsg, successMsg } from "services/feedbackService";
@@ -48,15 +49,7 @@ function AddModal(props: any) {
 
   return (
     <>
-      {/* Add Patient Button */}
-      <button
-        className="bg-success hover:bg-success_hover shadow-md py-1.5 px-2.5 text-white rounded-full"
-        type="button"
-        onClick={() => setShowModal(true)}
-      >
-        <i className="fa-solid fa-plus"></i>{" "}
-        <span className="sm: hidden xl:inline">Add New Patient</span>
-      </button>
+      <AddPatientBtn setShowModal={setShowModal} />
       {showModal ? (
         <>
           <div className="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -194,7 +187,7 @@ function AddModal(props: any) {
                         <i className="fa-solid fa-xmark"></i> Close
                       </button>
                       <button
-                        className="bg-success w-36 hover:bg-success_hover py-1.5 px-1.5 text-white rounded-full shadow"
+                        className="mx-2 bg-success w-36 hover:bg-success_hover py-1.5 px-1.5 text-white rounded-full shadow"
                         type="submit"
                       >
                         <i className="fa-solid fa-plus"></i> Add Patient

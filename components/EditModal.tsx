@@ -215,7 +215,7 @@ function EditModal(props: any) {
                     <i className="fa-solid fa-xmark"></i> Close
                   </button>
                   <button
-                    className="bg-success w-36 hover:bg-success_hover py-2 px-2 text-white rounded-full shadow"
+                    className="mx-2 bg-success w-36 hover:bg-success_hover py-2 px-2 text-white rounded-full shadow"
                     type="submit"
                   >
                     <i className="fa-regular fa-floppy-disk"></i> Save Changes

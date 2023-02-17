@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AddPatientMoadl from "./AddModal";
+import AddPatientModal from "./AddModal";
 import EditPatientModal from "./EditModal";
 import { getAllPatients } from "../services/patientService";
 import { NoTableData } from "./NoTableData";
@@ -47,13 +47,14 @@ const MainPetClininc = () => {
   return (
     <div>
       <div className="addAndSearch flex items-center justify-center">
-        <AddPatientMoadl
+        <AddPatientModal
           setIsChanged={setIsChanged}
           isChanged={isChanged}
           isLoading={isLoading}
           setIsLoading={setIsLoading}
           today={today}
           year={year}
+          setShowModal={setShowModal}
         />
         <FilterPet
           setSearch={setSearch}

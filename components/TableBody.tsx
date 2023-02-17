@@ -1,3 +1,5 @@
+import EditPatientBtn from "./EditPatientBtn";
+
 const TableBody = (props: any) => {
   return (
     <>
@@ -27,13 +29,7 @@ const TableBody = (props: any) => {
         </p>
       </td>
       <td className="px-5 py-5 border-b text-sm text-center">
-        <button
-          className=" bg-black hover:bg-black_hover w-9 py-1.5 px-1.5 text-white rounded-full shadow"
-          type="button"
-          onClick={() => props.editRow(props.patient._id)}
-        >
-          <i className="fa-regular fa-pen-to-square"></i>
-        </button>
+        <EditPatientBtn editRow={props.editRow} patientId={props.patient._id} />
       </td>
     </>
   );
