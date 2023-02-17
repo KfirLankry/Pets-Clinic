@@ -19,7 +19,6 @@ const MainPetClininc = () => {
   const [selectedRowId, setSelectedRowId] = useState<string>("");
   const today = new Date();
   const year = today.getFullYear();
-
   const tableHeaders: string[] = [
     "Patient Name",
     "Phone",

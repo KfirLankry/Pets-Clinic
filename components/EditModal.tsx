@@ -210,7 +210,7 @@ function EditModal(props: any) {
                   <button
                     className="bg-gray w-36 mx-1 hover:bg-gray_hover py-2 px-2 text-white rounded-full shadow"
                     type="button"
-                    onClick={() => props.onToggleModal(false)}
+                    onClick={() => props.setShowModal(false)}
                   >
                     <i className="fa-solid fa-xmark"></i> Close
                   </button>

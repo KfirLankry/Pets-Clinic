@@ -40,7 +40,7 @@ function AddModal(props: any) {
           props.setIsLoading(!props.isLoading);
           formik.resetForm();
         })
-        .catch((error) => {
+        .catch((err) => {
           errorMsg("Something went wrong... Please try agian!");
         });
     },
