@@ -1,0 +1,103 @@
+import React, { useState } from "react";
+import AddPatientMoadl from "./AddModal";
+import EditPatientModal from "./EditModal";
+import { getAllPatients } from "../services/patientService";
+import { NoTableData } from "./NoTableData";
+import Spinner from "./Spinner";
+import { errorMsg } from "services/feedbackService";
+import PetClinicTable from "./PetClicincTable";
+import FilterPet from "./FilterPet";
+
+const MainPetClininc = () => {
+  const [patients, setPatients] = useState<any[]>([]);
+  const [isChanged, setIsChanged] = useState<boolean>(false);
+  const [search, setSearch] = useState<string>("");
+  const [searchPetName, setSearchPetName] = useState<string>("");
+  const [select, setSelect] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [selectedRowId, setSelectedRowId] = useState<string>("");
+  const today = new Date();
+  const year = today.getFullYear();
+
+  const tableHeaders: string[] = [
+    "Patient Name",
+    "Phone",
+    "Pet Name",
+    "Pet Age",
+    "Pet Type",
+    "Actions",
+  ];
+
+  React.useEffect(() => {
+    getAllPatients()
+      .then((result) => {
+        setPatients(result.data);
+        setIsLoading((isLoading) => !isLoading);
+      })
+      .catch((err) => {
+        errorMsg("Something went wrong... Please try agian!");
+      });
+  }, [isChanged]);
+
+  const onEditRow = (rowId: string) => {
+    setSelectedRowId(rowId);
+    setShowModal(true);
+  };
+
+  return (
+    <div>
+      <div className="addAndSearch flex items-center justify-center">
+        <AddPatientMoadl
+          setIsChanged={setIsChanged}
+          isChanged={isChanged}
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
+          today={today}
+          year={year}
+        />
+        <FilterPet
+          setSearch={setSearch}
+          setSearchPetName={setSearchPetName}
+          setSelect={setSelect}
+        />
+      </div>
+
+      {!isLoading ? (
+        <div className="container mx-auto px-4 sm:px-8">
+          <div className="py-4 overflow-x-auto w-full">
+            <div className=" min-w-full rounded-lg w-36">
+              {!patients.length && !isLoading ? (
+                <NoTableData />
+              ) : (
+                <PetClinicTable
+                  editRow={onEditRow}
+                  tableHeaders={tableHeaders}
+                  patients={patients}
+                  search={search}
+                  searchPetName={searchPetName}
+                  select={select}
+                  year={year}
+                />
+              )}
+            </div>
+            {showModal && (
+              <EditPatientModal
+                setShowModal={setShowModal}
+                rowId={selectedRowId}
+                isChanged={isChanged}
+                setIsChanged={setIsChanged}
+                isLoading={isLoading}
+                setIsLoading={setIsLoading}
+              />
+            )}
+          </div>
+        </div>
+      ) : (
+        <Spinner />
+      )}
+    </div>
+  );
+};
+
+export default MainPetClininc;
