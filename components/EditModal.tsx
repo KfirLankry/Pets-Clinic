@@ -9,7 +9,14 @@ import {
   deletePatient,
 } from "../services/patientService";
 
-function EditModal(props: any) {
+function EditModal(props: {
+  setShowModal: (showModal: boolean) => void;
+  rowId: string;
+  isChanged: boolean;
+  setIsChanged: (isChanged: boolean) => void;
+  isLoading: boolean;
+  setIsLoading: (isLoading: boolean) => void;
+}) {
   const handleDeletePatient = (patient: IPatient) => {
     confirm(`${patient.name} will be deleted permanently, are you sure?`);
     deletePatient(patient)
@@ -24,7 +31,7 @@ function EditModal(props: any) {
       });
   };
 
-  const [patient, setPatient] = useState({
+  const [patient, setPatient] = useState<IPatient>({
     name: "",
     phone: "",
     petName: "",

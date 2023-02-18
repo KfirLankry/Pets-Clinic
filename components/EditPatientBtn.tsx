@@ -1,4 +1,9 @@
-const EditPatientBtn = (props: any) => {
+import { IPatient } from "@/lib/interfaces";
+
+const EditPatientBtn = (props: {
+  editRow: (editRow: string | undefined) => void;
+  patientId: string | undefined;
+}) => {
   return (
     <button
       className=" bg-black hover:bg-black_hover w-9 py-1.5 px-1.5 text-white rounded-full shadow"

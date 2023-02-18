@@ -1,6 +1,15 @@
+import { IPatient } from "@/lib/interfaces";
 import TableBody from "./TableBody";
 
-const PetClinicTable = (props: any) => {
+const PetClinicTable = (props: {
+  editRow: (editRow: string | undefined) => void;
+  tableHeaders: string[];
+  patients: IPatient[];
+  search: string;
+  searchPetName: string;
+  select: string;
+  year: number;
+}) => {
   return (
     <table className="min-w-full leading-normal text-center sm:table-fixed mt-3 shadow-md">
       <thead className="bg-black text-white text-center">
@@ -19,26 +28,26 @@ const PetClinicTable = (props: any) => {
       </thead>
       <tbody>
         {props.patients
-          .filter((patient: any) => {
+          .filter((patient: IPatient) => {
             return props.search.toLowerCase() == "" ||
               props.search.toUpperCase() == ""
               ? patient
               : patient.name.toLowerCase().includes(props.search) ||
                   patient.name.toUpperCase().includes(props.search);
           })
-          .filter((pet: any) => {
+          .filter((pet: IPatient) => {
             return props.searchPetName.toLowerCase() == "" ||
               props.searchPetName.toUpperCase() == ""
               ? pet
               : pet.petName.toLowerCase().includes(props.searchPetName) ||
                   pet.petName.toUpperCase().includes(props.searchPetName);
           })
-          .filter((selected: any) => {
+          .filter((selected: IPatient) => {
             return props.select == undefined
               ? selected
               : selected.petType.includes(props.select);
           })
-          .map((patient: any) => {
+          .map((patient: IPatient) => {
             return (
               <tr key={patient._id} className="bg-white">
                 <TableBody

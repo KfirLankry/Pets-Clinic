@@ -1,4 +1,8 @@
-const FilterPet = (props: any) => {
+const FilterPet = (props: {
+  setSearch: (setSearch: string) => void;
+  setSearchPetName: (setSearchPetName: string) => void;
+  setSelect: (setSelect: string) => void;
+}) => {
   return (
     <>
       <input

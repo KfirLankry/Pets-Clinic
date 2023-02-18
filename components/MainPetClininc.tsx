@@ -7,9 +7,10 @@ import Spinner from "./Spinner";
 import { errorMsg } from "services/feedbackService";
 import PetClinicTable from "./PetClicincTable";
 import FilterPet from "./FilterPet";
+import { IPatient } from "@/lib/interfaces";
 
 const MainPetClininc = () => {
-  const [patients, setPatients] = useState<any[]>([]);
+  const [patients, setPatients] = useState<IPatient[]>([]);
   const [isChanged, setIsChanged] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
   const [searchPetName, setSearchPetName] = useState<string>("");

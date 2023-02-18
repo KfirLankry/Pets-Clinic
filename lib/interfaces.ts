@@ -3,6 +3,6 @@ export interface IPatient {
   name: string;
   phone: string;
   petName: string;
-  petBirthDate?: string;
+  petBirthDate: string;
   petType: string;
 }

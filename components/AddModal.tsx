@@ -5,7 +5,15 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { errorMsg, successMsg } from "services/feedbackService";
 
-function AddModal(props: any) {
+function AddModal(props: {
+  setIsChanged: (isChanged: boolean) => void;
+  isChanged: boolean;
+  isLoading: boolean;
+  setIsLoading: (isLoading: boolean) => void;
+  today: Date;
+  year: number;
+  setShowModal: (showModal: boolean) => void;
+}) {
   const [showModal, setShowModal] = useState<boolean>(false);
 
   // Pet BirthDate

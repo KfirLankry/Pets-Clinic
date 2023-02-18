@@ -1,4 +1,6 @@
-const AddPatientBtn = (props: any) => {
+const AddPatientBtn = (props: {
+  setShowModal: (showModal: boolean) => void;
+}) => {
   return (
     <button
       className="bg-success hover:bg-success_hover shadow-md py-1.5 px-2.5 text-white rounded-full"

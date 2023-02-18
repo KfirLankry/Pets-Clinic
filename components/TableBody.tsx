@@ -1,6 +1,11 @@
+import { IPatient } from "@/lib/interfaces";
 import EditPatientBtn from "./EditPatientBtn";
 
-const TableBody = (props: any) => {
+const TableBody = (props: {
+  patient: IPatient;
+  year: number;
+  editRow: (editRow: string | undefined) => void;
+}) => {
   return (
     <>
       <td className="px-5 py-5 border-b  text-sm">
