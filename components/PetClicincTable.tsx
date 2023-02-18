@@ -2,7 +2,7 @@ import { IPatient } from "@/lib/interfaces";
 import TableBody from "./TableBody";
 
 const PetClinicTable = (props: {
-  editRow: (editRow: string | undefined) => void;
+  editRow: (editRow: string) => void;
   tableHeaders: string[];
   patients: IPatient[];
   search: string;

@@ -4,7 +4,7 @@ import EditPatientBtn from "./EditPatientBtn";
 const TableBody = (props: {
   patient: IPatient;
   year: number;
-  editRow: (editRow: string | undefined) => void;
+  editRow: (editRow: string) => void;
 }) => {
   return (
     <>
@@ -34,7 +34,10 @@ const TableBody = (props: {
         </p>
       </td>
       <td className="px-5 py-5 border-b text-sm text-center">
-        <EditPatientBtn editRow={props.editRow} patientId={props.patient._id} />
+        <EditPatientBtn
+          editRow={props.editRow}
+          patientId={props.patient._id as string}
+        />
       </td>
     </>
   );
