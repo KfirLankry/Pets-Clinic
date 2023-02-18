@@ -3,7 +3,7 @@ import pet from "../public/pet.png";
 
 export const NoTableData = () => {
   return (
-    <div className="empty mt-10">
+    <div className="empty mt-5">
       <p className="text-center text-2xl font-medium mb-5">
         Patients List is Empty...
       </p>

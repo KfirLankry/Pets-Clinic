@@ -8,7 +8,7 @@ const TableBody = (props: {
 }) => {
   return (
     <>
-      <td className="px-5 py-5 border-b  text-sm">
+      <td className="px-5 py-5 border-b text-sm">
         <p className="whitespace-no-wrap">{props.patient.name}</p>
       </td>
       <td className="px-5 py-5 border-b bg-white text-sm">

@@ -7,7 +7,7 @@ import Head from "next/head";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
       <ToastContainer theme="dark" />
       <Head>
         <title>Pets Clinic</title>
