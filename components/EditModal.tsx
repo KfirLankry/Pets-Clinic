@@ -76,11 +76,7 @@ function EditModal(props: any) {
   return (
     <>
       <div className="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-        <div className="main relative my-9 mx-auto max-w-3xl">
-          <style jsx>{`
-                .main {
-                  width: 25rem
-              `}</style>
+        <div className="main w-96 relative my-9 mx-auto max-w-3xl">
           {/*Modal Content*/}
           <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
             {/*Modal Header*/}
