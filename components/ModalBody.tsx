@@ -119,9 +119,9 @@ const ModalBody = (props: {
             <i className="fa-solid fa-xmark"></i> Close
           </button>
           <button
+            disabled={!props.formik.isValid || props.formik.isSubmitting}
             className="mx-2 bg-success w-36 hover:bg-success_hover py-1.5 px-1.5 text-white rounded-full shadow"
             type="submit"
-            disabled={props.formik.isSubmitting}
           >
             <i className="fa-solid fa-plus"></i> Save
           </button>

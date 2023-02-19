@@ -10,6 +10,7 @@ const patientSchema = new Schema({
     type: String,
     required: true,
     minlength: 9,
+    maxlength: 10,
   },
   petName: {
     type: String,

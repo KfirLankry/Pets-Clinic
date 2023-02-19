@@ -36,12 +36,13 @@ function AddModal(props: {
     },
     validationSchema: yup.object({
       name: yup.string().required().min(2),
-      phone: yup.string().required().min(9),
+      phone: yup.string().required().min(9).max(10),
       petName: yup.string().required().min(2),
       petBirthDate: yup.string().required(),
       petType: yup.string().required().min(2),
     }),
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: (values, onSubmitProps) => {
+      onSubmitProps.setSubmitting(false);
       addNewPatient(values)
         .then((result) => {
           successMsg("Patient Added Successfully!");
