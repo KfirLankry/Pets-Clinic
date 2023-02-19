@@ -24,7 +24,7 @@ function AddModal(props: {
   const month = `${props.today.getMonth() + 1 < 10 ? "0" : ""}${
     props.today.getMonth() + 1
   }`;
-  const todayDate = `${day}/${month}/${props.year}`;
+  const todayDate = `${props.year}/${month}/${day}`;
 
   const formik = useFormik({
     initialValues: {
