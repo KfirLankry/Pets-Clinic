@@ -122,7 +122,7 @@ const ModalBody = (props: {
             className="mx-2 bg-success w-36 hover:bg-success_hover py-1.5 px-1.5 text-white rounded-full shadow"
             type="submit"
           >
-            <i className="fa-solid fa-plus"></i> Add Patient
+            <i className="fa-solid fa-plus"></i> Save
           </button>
         </div>
       </form>
