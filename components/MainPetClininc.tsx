@@ -142,9 +142,7 @@ const MainPetClininc = () => {
                     sort={onSort}
                     pets={petTypes}
                   />
-                ) : (
-                  <Spinner />
-                )}
+                ) : null}
               </div>
 
               <div className="flex justify-center items-center">
