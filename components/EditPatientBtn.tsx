@@ -1,5 +1,3 @@
-import { IPatient } from "@/lib/interfaces";
-
 const EditPatientBtn = (props: {
   editRow: (editRow: string) => void;
   patientId: string;

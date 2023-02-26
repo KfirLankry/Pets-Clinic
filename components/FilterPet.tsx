@@ -1,32 +1,36 @@
+import { IPatient } from "@/lib/interfaces";
+import Select from "react-select";
+
 const FilterPet = (props: {
   setSearch: (setSearch: string) => void;
   setSearchPetName: (setSearchPetName: string) => void;
   setSelect: (setSelect: string) => void;
+  filter: (setSelect: any) => void;
+  pets: object[];
+  sort: (sort: any) => void;
 }) => {
   return (
     <>
       <input
-        className="p-1 mx-1.5 border-solid border-2 border-lightgrey rounded-md shadow w-3/12"
+        className="p-1.5 mx-1 border-solid border-2 border-lightgrey rounded-md  w-4/12"
         type="search"
         placeholder="Patient Name..."
-        onChange={(e) => props.setSearch(e.target.value)}
+        onChange={props.filter}
       />
       <input
-        className="p-1 border-solid border-2 border-lightgrey rounded-md shadow w-3/12"
+        className="p-1.5 border-solid border-2 border-lightgrey rounded-md  w-4/12"
         type="search"
         placeholder="Pet Name..."
-        onChange={(e) => props.setSearchPetName(e.target.value)}
+        onChange={props.filter}
       />
-      <select
-        className="p-1.5 mx-1 border-solid border-2 border-lightgrey rounded-md shadow w-3/12"
-        aria-label="Default select example"
-        onChange={(e) => props.setSelect(e.target.value)}
-      >
-        <option value={""}>All</option>
-        <option value="Dog">Dog</option>
-        <option value="Cat">Cat</option>
-        <option value="Parrot">Parrot</option>
-      </select>
+      <Select
+        isMulti
+        options={props.pets}
+        className="basic-multi-select mx-1 border-solid border-lightgrey  w-4/12"
+        classNamePrefix="select"
+        placeholder="Sort..."
+        onChange={props.sort}
+      />
     </>
   );
 };

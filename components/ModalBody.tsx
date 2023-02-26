@@ -1,6 +1,7 @@
 const ModalBody = (props: {
   setShowModal: (showModal: boolean) => void;
   formik: any;
+  isSubmit: boolean;
 }) => {
   return (
     <>
@@ -88,21 +89,23 @@ const ModalBody = (props: {
 
           <div className="input flex justify-center ">
             <select
-              className="p-2 mt-3 mb-3 border-solid border-2 border-lightgrey rounded-md w-80 shadow-sm"
+              className="p-2 mt-3 mb-1 border-solid border-2 border-lightgrey rounded-md w-80 shadow-sm"
               id="petType"
               name="petType"
-              value={props.formik.values.petType}
+              defaultValue={"Choose"}
               onChange={props.formik.handleChange}
               onBlur={props.formik.handleBlur}
             >
-              <option>Select Pet Type:</option>
+              <option disabled value="Choose">
+                Choose Pet Type:
+              </option>
               <option value="Dog">Dog</option>
               <option value="Cat">Cat</option>
               <option value="Parrot">Parrot</option>
             </select>
           </div>
           {props.formik.touched.petType && props.formik.errors.petType ? (
-            <p className="text-error pl-3">
+            <p className="text-error pl-3 mb-1">
               {" "}
               <i className="fa-solid fa-circle-exclamation"></i>{" "}
               {props.formik.errors.petType}
@@ -119,7 +122,7 @@ const ModalBody = (props: {
             <i className="fa-solid fa-xmark"></i> Close
           </button>
           <button
-            disabled={!props.formik.isValid || props.formik.isSubmitting}
+            disabled={props.isSubmit}
             className="mx-2 bg-success w-36 hover:bg-success_hover py-1.5 px-1.5 text-white rounded-full shadow"
             type="submit"
           >

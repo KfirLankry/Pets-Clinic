@@ -14,6 +14,8 @@ function AddModal(props: {
   today: Date;
   year: number;
   setShowModal: (showModal: boolean) => void;
+  isSubmit: boolean;
+  setIsSubmit: (isSubmit: boolean) => void;
 }) {
   const [showModal, setShowModal] = useState<boolean>(false);
 
@@ -42,14 +44,16 @@ function AddModal(props: {
       petType: yup.string().required().min(2),
     }),
     onSubmit: (values, onSubmitProps) => {
+      props.setIsSubmit(true);
       onSubmitProps.setSubmitting(false);
       addNewPatient(values)
         .then((result) => {
           successMsg("Patient Added Successfully!");
           setShowModal(false);
           props.setIsChanged(!props.isChanged);
-          props.setIsLoading(!props.isLoading);
+          props.setIsLoading(false);
           formik.resetForm();
+          props.setIsSubmit(false);
         })
         .catch((err) => {
           errorMsg("Something went wrong... Please try agian!");
@@ -72,7 +76,11 @@ function AddModal(props: {
                 </div>
                 {/*Modal Body*/}
                 <div className="addForm mx-auto pt-3">
-                  <ModalBody formik={formik} setShowModal={setShowModal} />
+                  <ModalBody
+                    formik={formik}
+                    setShowModal={setShowModal}
+                    isSubmit={props.isSubmit}
+                  />
                 </div>
               </div>
             </div>

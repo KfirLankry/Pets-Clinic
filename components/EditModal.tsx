@@ -17,6 +17,8 @@ function EditModal(props: {
   setIsChanged: (isChanged: boolean) => void;
   isLoading: boolean;
   setIsLoading: (isLoading: boolean) => void;
+  isSubmit: boolean;
+  setIsSubmit: (isSubmit: boolean) => void;
 }) {
   const handleDeletePatient = (patient: IPatient) => {
     confirm(`${patient.name} will be deleted permanently, are you sure?`);
@@ -24,7 +26,7 @@ function EditModal(props: {
       .then(() => {
         successMsg("Patient Deleted Successfully!");
         props.setIsChanged(!props.isChanged);
-        props.setIsLoading(!props.isLoading);
+        props.setIsLoading(false);
         props.setShowModal(false);
       })
       .catch((err) => {
@@ -73,7 +75,7 @@ function EditModal(props: {
         .then((result) => {
           successMsg("Patient Edited Successfully!");
           props.setIsChanged(!props.isChanged);
-          props.setIsLoading(!props.isLoading);
+          props.setIsLoading(false);
           props.setShowModal(false);
         })
         .catch((error) => {
@@ -102,7 +104,11 @@ function EditModal(props: {
             </div>
             {/*Modal Body*/}
             <div className="addForm mx-auto pt-3">
-              <ModalBody formik={formik} setShowModal={props.setShowModal} />
+              <ModalBody
+                formik={formik}
+                setShowModal={props.setShowModal}
+                isSubmit={props.isSubmit}
+              />
             </div>
           </div>
         </div>
