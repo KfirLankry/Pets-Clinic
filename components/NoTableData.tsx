@@ -8,8 +8,8 @@ export const NoTableData = () => {
         <Image
           src={pet}
           alt="Pet"
-          width={700}
-          height={564}
+          width={600}
+          height={464}
           quality={100}
         ></Image>
       </div>
